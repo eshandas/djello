@@ -1,0 +1,43 @@
+{% load widget_tweaks %}
+
+
+<div class="card">
+  {% if fieldset.name %}
+    <div class="card-header">
+      <strong class="card-title">{{ fieldset.name }}</strong>
+      {% if fieldset.description %}{{ fieldset.description|safe }}{% endif %}
+    </div>
+  {% endif %}
+  <div class="card-body">
+    {% for line in fieldset %}
+      <div class="form-group">
+        {% for field in line %}
+          {% if not line.fields|length_is:'1' and not field.is_readonly %}{{ field.errors }}{% endif %}
+          {% if field.is_checkbox %}
+            {{ field.field }}&nbsp;{{ field.label_tag }}
+          {% else %}
+            {{ field.label_tag }}
+            {% if field.is_readonly %}
+              <div class="readonly">{{ field.contents }}</div>
+            {% else %}
+              {{ field.field|add_class:"form-control" }}
+            {% endif %}
+          {% endif %}
+          {% if field.field.help_text %}
+            <div class="alert alert-light" role="alert" style="padding-bottom: 0px; margin-top: 0px; padding-left: 0px;">
+              {{ field.field.help_text|safe }}
+            </div>
+          {% endif %}
+          {% if line.fields|length_is:'1' %}
+            {% if line.errors %}
+              <div class="alert alert-danger" role="alert" style="padding-bottom: 0px; margin-top: 5px; padding-left: 35px;">
+                {{ line.errors }}
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% if forloop.last %}{% else %}<hr>{% endif %}
+    {% endfor %}
+  </div>
+</div>

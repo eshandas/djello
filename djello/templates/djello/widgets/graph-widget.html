@@ -1,0 +1,96 @@
+<div class="col-lg-{{ widget.size }}">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="box-title">Traffic </h4>
+    </div>
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="card-body">
+          <!-- <canvas id="TrafficChart"></canvas>   -->
+          <div id="traffic-chart" class="traffic-chart">
+            <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-line" style="width: 100%; height: 100%;">
+              <g class="ct-grids">
+                <line x1="50" x2="50" y1="15" y2="300" class="ct-grid ct-horizontal"></line>
+                <line x1="227" x2="227" y1="15" y2="300" class="ct-grid ct-horizontal"></line>
+                <line x1="404" x2="404" y1="15" y2="300" class="ct-grid ct-horizontal"></line>
+                <line x1="581" x2="581" y1="15" y2="300" class="ct-grid ct-horizontal"></line>
+                <line x1="758" x2="758" y1="15" y2="300" class="ct-grid ct-horizontal"></line>
+                <line x1="935" x2="935" y1="15" y2="300" class="ct-grid ct-horizontal"></line>
+                <line y1="300" y2="300" x1="50" x2="935" class="ct-grid ct-vertical"></line>
+                <line y1="259.2857142857143" y2="259.2857142857143" x1="50" x2="935" class="ct-grid ct-vertical"></line>
+                <line y1="218.57142857142856" y2="218.57142857142856" x1="50" x2="935" class="ct-grid ct-vertical"></line>
+                <line y1="177.85714285714286" y2="177.85714285714286" x1="50" x2="935" class="ct-grid ct-vertical"></line>
+                <line y1="137.14285714285714" y2="137.14285714285714" x1="50" x2="935" class="ct-grid ct-vertical"></line>
+                <line y1="96.42857142857142" y2="96.42857142857142" x1="50" x2="935" class="ct-grid ct-vertical"></line>
+                <line y1="55.71428571428572" y2="55.71428571428572" x1="50" x2="935" class="ct-grid ct-vertical"></line>
+                <line y1="15" y2="15" x1="50" x2="935" class="ct-grid ct-vertical"></line>
+              </g>
+              <g>
+                <g class="ct-series ct-series-a">
+                  <path d="M 50 300 L 50 300 C 109 251.143 168 200.89 227 153.429 C 286 105.967 345 15 404 15 C 463 15 522 83.901 581 96.429 C 640 108.956 699 106.526 758 120.857 C 817 135.189 876 240.286 935 300 L 935 300 Z" class="ct-area"></path>
+                </g>
+                <g class="ct-series ct-series-b">
+                  <path d="M 50 300 L 50 300 C 109 210.429 168 31.286 227 31.286 C 286 31.286 345 177.857 404 177.857 C 463 177.857 522 137.143 581 137.143 C 640 137.143 699 157.603 758 177.857 C 817 198.111 876 257.657 935 297.557 L 935 300 Z" class="ct-area"></path>
+                </g>
+                <g class="ct-series ct-series-c">
+                  <path d="M 50 300 L 50 300 C 109 259.286 168 215.663 227 177.857 C 286 140.051 345 72 404 72 C 463 72 522 177.857 581 177.857 C 640 177.857 699 55.714 758 55.714 C 817 55.714 876 191.429 935 259.286 L 935 300 Z" class="ct-area"></path>
+                </g>
+              </g>
+              <g class="ct-labels">
+                <foreignObject style="overflow: visible;" x="50" y="305" width="177" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 177px; height: 20px;">Jan</span></foreignObject>
+                <foreignObject style="overflow: visible;" x="227" y="305" width="177" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 177px; height: 20px;">Feb</span></foreignObject>
+                <foreignObject style="overflow: visible;" x="404" y="305" width="177" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 177px; height: 20px;">Mar</span></foreignObject>
+                <foreignObject style="overflow: visible;" x="581" y="305" width="177" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 177px; height: 20px;">Apr</span></foreignObject>
+                <foreignObject style="overflow: visible;" x="758" y="305" width="177" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 177px; height: 20px;">May</span></foreignObject>
+                <foreignObject style="overflow: visible;" x="935" y="305" width="30" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 30px; height: 20px;">Jun</span></foreignObject>
+                <foreignObject style="overflow: visible;" y="259.2857142857143" x="10" height="40.714285714285715" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 41px; width: 30px;">0</span></foreignObject>
+                <foreignObject style="overflow: visible;" y="218.57142857142856" x="10" height="40.714285714285715" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 41px; width: 30px;">5000</span></foreignObject>
+                <foreignObject style="overflow: visible;" y="177.85714285714283" x="10" height="40.71428571428571" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 41px; width: 30px;">10000</span></foreignObject>
+                <foreignObject style="overflow: visible;" y="137.14285714285714" x="10" height="40.71428571428572" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 41px; width: 30px;">15000</span></foreignObject>
+                <foreignObject style="overflow: visible;" y="96.42857142857142" x="10" height="40.71428571428572" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 41px; width: 30px;">20000</span></foreignObject>
+                <foreignObject style="overflow: visible;" y="55.71428571428572" x="10" height="40.714285714285694" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 41px; width: 30px;">25000</span></foreignObject>
+                <foreignObject style="overflow: visible;" y="15" x="10" height="40.71428571428572" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 41px; width: 30px;">30000</span></foreignObject>
+                <foreignObject style="overflow: visible;" y="-15" x="10" height="30" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 30px; width: 30px;">35000</span></foreignObject>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card-body">
+          <div class="progress-box progress-1">
+            <h4 class="por-title">Visits</h4>
+            <div class="por-txt">96,930 Users (40%)</div>
+            <div class="progress mb-2" style="height: 5px;">
+              <div class="progress-bar bg-flat-color-1" role="progressbar" style="width: 40%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="progress-box progress-2">
+            <h4 class="por-title">Bounce Rate</h4>
+            <div class="por-txt">3,220 Users (24%)</div>
+            <div class="progress mb-2" style="height: 5px;">
+              <div class="progress-bar bg-flat-color-2" role="progressbar" style="width: 24%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="progress-box progress-2">
+            <h4 class="por-title">Unique Visitors</h4>
+            <div class="por-txt">29,658 Users (60%)</div>
+            <div class="progress mb-2" style="height: 5px;">
+              <div class="progress-bar bg-flat-color-3" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="progress-box progress-2">
+            <h4 class="por-title">Targeted  Visitors</h4>
+            <div class="por-txt">99,658 Users (90%)</div>
+            <div class="progress mb-2" style="height: 5px;">
+              <div class="progress-bar bg-flat-color-4" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+    </div>
+    <!-- /.row --> 
+    <div class="card-body"></div>
+  </div>
+</div>

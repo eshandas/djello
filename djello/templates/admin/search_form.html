@@ -1,0 +1,22 @@
+{% load i18n static %}
+
+
+
+{% if cl.search_fields %}
+  
+  
+
+
+  <button class="search-trigger"><i class="fa fa-search"></i></button>
+  <div class="form-inline">
+    <form id="changelist-search" method="get" class="search-form">
+      <input id="searchModel" class="form-control mr-sm-2" type="text" placeholder="{% trans 'Search' %} ..." aria-label="{% trans 'Search' %}" name="{{ search_var }}" value="{{ cl.query }}" />
+      <button id="searchModelBtn" type="submit" style="right: 45px;"><i class="fa fa-search"></i></button>
+      <button class="search-close"><i class="fa fa-close"></i></button>
+
+      {% for pair in cl.params.items %}
+        {% if pair.0 != search_var %}<input type="hidden" name="{{ pair.0 }}" value="{{ pair.1 }}"/>{% endif %}
+      {% endfor %}
+    </form>
+  </div>
+{% endif %}

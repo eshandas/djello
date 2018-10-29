@@ -1,0 +1,9 @@
+{% extends "djello/base_login.html" %}
+{% load i18n static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+  <p>{% trans "Thanks for spending some quality time with the web site today." %}</p>
+  <a href="{% url 'admin:index' %}" class="btn btn-link">{% trans 'Log in again' %}</a>
+{% endblock %}

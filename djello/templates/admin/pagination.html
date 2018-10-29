@@ -1,0 +1,31 @@
+{% load admin_list djello_template_tags i18n %}
+
+<div class="row">
+  <div class="col-md-3">
+    {{ cl.result_count }}&nbsp;
+    {% if cl.result_count == 1 %}
+      {{ cl.opts.verbose_name }}
+    {% else %}
+      {{ cl.opts.verbose_name_plural }}
+    {% endif %}
+
+    {% if show_all_url %}
+      &nbsp;&nbsp;<a href="{{ show_all_url }}" class="btn btn-link">{% trans 'Show all' %}</a>
+    {% endif %}
+    {% if cl.formset and cl.result_count %}
+      <input type="submit" name="_save" class="btn btn-link" value="{% trans 'Save' %}"/>
+    {% endif %}
+  </div>
+
+  <div class="col-md-9">
+    <div class="pull-right dataTables_paginate paging_simple_numbers">
+      {% if pagination_required %}
+        <ul class="pagination">
+          {% for i in page_range %}
+            {% djello_paginator_number cl i %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+</div>

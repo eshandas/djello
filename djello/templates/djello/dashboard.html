@@ -1,0 +1,9 @@
+{% for row in layout %}
+  <div class="row">
+    {% for widget in row %}
+      {% with 'djello/widgets/'|add:widget.widget|add:'.html' as template %}
+        {% include template %}
+      {% endwith %}
+    {% endfor %}
+  </div>
+{% endfor %}

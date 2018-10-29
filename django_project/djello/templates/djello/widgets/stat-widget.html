@@ -1,0 +1,34 @@
+<div class="col-md-{{ widget.size }}">
+  <div class="card">
+    <div class="card-body">
+      <div class="stat-widget-five">
+        <div class="stat-icon dib {{ widget.color }}">
+          <i class="fa {{ widget.icon }}"></i>
+        </div>
+        <div class="stat-content">
+          <div class="text-left dib"> 
+            <div id="{{ widget.id }}MainText" class="stat-text">Loading...</div>
+            <div id="{{ widget.id }}SubText" class="stat-heading">Loading...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  //Sales chart
+  initWidgets.push({
+    dataUrl: "{% url widget.data_url %}",  // api to fetch data from
+    successFunc: function(context) {
+      // render graph when graph context fetched successfully
+      var mainText = document.getElementById("{{ widget.id }}MainText");
+      mainText.innerHTML = context['mainText'];
+      var subText = document.getElementById("{{ widget.id }}SubText");
+      subText.innerHTML = context['subText'];
+    },
+    errorFunc: function(err) {
+      // handle error if grapg context couldn't be fetched
+    }
+  });
+</script>

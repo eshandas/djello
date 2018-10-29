@@ -1,0 +1,52 @@
+{% load i18n static djello_template_tags %}
+
+<div class="col-lg-{{ widget.size }}">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title box-title">{% trans 'Recent actions' %}</h4>
+      <div class="card-content scrollable">
+        <div class="tdl-content">
+          <ul class="list-group list-group-flush">
+            {% load log %}
+            {% get_admin_log 10 as admin_log for_user user %}
+            {% if not admin_log %}
+            <li class="list-group-item">
+              <i class="fa fa-minus"></i>&nbsp;{% trans 'None available' %}</span> 
+            </li>
+            {% else %}
+            {% for entry in admin_log %}
+            <li class="list-group-item">
+              {% if entry.is_addition %}
+              <i class="fa fa-plus text-success"></i>
+              {% elif entry.is_change %}
+              <i class="fa fa-pencil text-warning"></i>
+              {% elif entry.is_deletion %}
+              <i class="fa fa-times text-danger"></i>
+              {% endif %}
+              &nbsp;
+              <span class="medium-text">
+              {% if entry.is_deletion or not entry.get_admin_url %}
+              {{ entry.object_repr }}
+              {% else %}
+              <a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
+              {% endif %}
+              </span>
+              <span class="small-text pull-right">
+              {% if entry.content_type %}
+              {% filter capfirst %}{{ entry.content_type }}{% endfilter %}
+              {% else %}
+              {% trans 'Unknown content' %}
+              {% endif %}
+              </span>
+            </li>
+            {% endfor %}
+            {% endif %}
+          </ul>
+        </div>
+        <!-- /.todo-list -->
+      </div>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>

@@ -1,0 +1,59 @@
+{% extends "djello/base_login.html" %}
+{% load i18n static widget_tweaks %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+  <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+    <div class="form-group">
+      {{ form.username.label_tag }}
+      {{ form.username|add_class:"form-control" }}
+      {% if form.username.errors %}
+        <div class="alert alert-danger" role="alert" style="padding-bottom: 0px; margin-top: 5px; padding-left: 35px;">
+          {{ form.username.errors }}
+        </div>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      {{ form.password.label_tag }}
+      {{ form.password|add_class:"form-control" }}
+      {% if form.password.errors %}
+        <div class="alert alert-danger" role="alert" style="padding-bottom: 0px; margin-top: 5px; padding-left: 35px;">
+          {{ form.password.errors }}
+        </div>
+      {% endif %}
+      <input type="hidden" name="next" value="{{ next }}" />
+    </div>
+    {% url 'admin_password_reset' as password_reset_url %}
+    {% if password_reset_url %}
+    <div class="password-reset-link">
+      <a href="{{ password_reset_url }}">{% trans 'Forgotten your password or username?' %}</a>
+    </div>
+    {% endif %}
+    <input type="submit" class="btn btn-success btn-flat m-b-30 m-t-30" value="{% trans 'Log in' %}" />
+    {% url 'admin_password_reset' as password_reset_url %}
+    {% if password_reset_url %}
+      <a href="{{ password_reset_url }}" class="btn btn-link">{% trans 'Forgotten your password or username?' %}</a>
+    {% endif %}
+  </form>
+  <br>
+  {% if form.non_field_errors %}
+    <div class="alert alert-danger" role="alert">
+      {% if form.errors.items|length == 1 %}{% trans "Please correct the error." %}{% else %}{% trans "Please correct the errors." %}{% endif %}
+      {% for error in form.non_field_errors %}
+      <p class="errornote">
+        {{ error }}
+      </p>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if user.is_authenticated %}
+    <div class="alert alert-warning" role="alert">
+      {% blocktrans trimmed %}
+        You are authenticated as {{ username }}, but are not authorized to
+        access this page. Would you like to login to a different account?
+      {% endblocktrans %}
+    </div>
+  {% endif %}
+{% endblock %}

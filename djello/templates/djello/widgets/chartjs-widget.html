@@ -1,0 +1,30 @@
+<div class="col-lg-{{ widget.size }}">
+  <div class="card">
+    <div class="card-body">
+      <h4 id="{{ widget.id }}Header" class="mb-3">Loading...</h4>
+      <canvas id="{{ widget.id }}"></canvas>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  //Sales chart
+  initWidgets.push({
+    dataUrl: "{% url widget.data_url %}",  // api to fetch data from
+    successFunc: function(context) {
+      // render graph when graph context fetched successfully
+      var header = document.getElementById("{{ widget.id }}Header");
+      header.innerHTML = context['label'];
+      var ctx = document.getElementById("{{ widget.id }}");
+      ctx.height = 150;
+      var myChart = new Chart( ctx, {
+          type: context['type'],
+          data: context['data'],
+          options: context['options']
+      });
+    },
+    errorFunc: function(err) {
+      // handle error if grapg context couldn't be fetched
+    }
+  });
+</script>

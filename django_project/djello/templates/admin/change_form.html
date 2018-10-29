@@ -1,0 +1,131 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static admin_modify %}
+{% block extrahead %}{{ block.super }}
+<script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+{{ media }}
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-form{% endblock %}
+
+
+
+{% if not is_popup %}
+{% block breadcrumbs %}
+  <div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <div class="row m-0">
+        <div class="col-sm-4">
+          <div class="page-header float-left">
+            <div class="page-title">
+              <h1>{% if title %}{{ title }}{% endif %}</h1>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="page-header float-right">
+            <div class="page-title">
+              <ol class="breadcrumb text-right">
+                <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a></li>
+                <li><a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a></li>
+                <li>
+                  {% if has_change_permission %}
+                    <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>{% else %}{{ opts.verbose_name_plural|capfirst }}
+                  {% endif %}
+                </li>
+                <li>
+                  {% if add %}
+                    {% blocktrans with name=opts.verbose_name %}Add {{ name }}{% endblocktrans %}{% else %}{{ original|truncatewords:"18" }}
+                  {% endif %}
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% endif %}
+
+
+{% block content %}
+  <div class="content">
+    <div class="animated">
+      <div class="card">
+        <div class="card-header">
+          <strong class="card-title" v-if="headerText">{% block pretitle %}{% endblock %}</strong>
+          <div class="pull-right">
+            {% block object-tools-items %}
+              {% if has_add_permission %}
+                {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
+                <a href="{% add_preserved_filters history_url %}" class="historylink">{% trans "History" %}</a>
+              {% endif %}
+              {% if has_absolute_url %}
+                <a href="{{ absolute_url }}" class="viewsitelink">{% trans "View on site" %}</a>
+              {% endif %}
+            {% endblock %}
+          </div>
+        </div>
+        <div class="card-body">
+          
+          <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.model_name }}_form" novalidate>{% csrf_token %}{% block form_top %}{% endblock %}
+            <div>
+              {% if is_popup %}<input type="hidden" name="{{ is_popup_var }}" value="1" />{% endif %}
+              {% if to_field %}<input type="hidden" name="{{ to_field_var }}" value="{{ to_field }}" />{% endif %}
+              {% if save_on_top %}{% block submit_buttons_top %}{% submit_row %}{% endblock %}{% endif %}
+              {% if errors %}
+                <div class="alert alert-danger" role="alert">
+                  {% if errors|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
+                </div>
+                {{ adminform.form.non_field_errors }}
+              {% endif %}
+
+
+              <div class="row">
+                <div class="col-md-9">
+                  {% block field_sets %}
+                    {% for fieldset in adminform %}
+                      {% include "admin/includes/fieldset.html" %}
+                    {% endfor %}
+                  {% endblock %}
+
+              
+
+
+                  {% block after_field_sets %}{% endblock %}
+                  {% block inline_field_sets %}
+                    {% for inline_admin_formset in inline_admin_formsets %}
+                      {% include inline_admin_formset.opts.template %}
+                    {% endfor %}
+                  {% endblock %}
+                  {% block after_related_objects %}{% endblock %}
+                </div>
+
+
+                <div class="col-md-3">
+                  <div style="position: -webkit-sticky; position: sticky; top: 72px">
+                    {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
+                  </div>
+                </div>
+              </div>
+
+
+              {% block admin_change_form_document_ready %}
+                <script type="text/javascript"
+                id="django-admin-form-add-constants"
+                src="{% static 'admin/js/change_form.js' %}"
+                {% if adminform and add %}
+                data-model-name="{{ opts.model_name }}"
+                {% endif %}>
+                </script>
+              {% endblock %}
+              {# JavaScript for prepopulated fields #}
+              {% prepopulated_fields_js %}
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
