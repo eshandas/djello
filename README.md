@@ -3,7 +3,7 @@ A pretty and configurable admin panel to enhance the default Django Admin Panel 
 
 ## Version
 
-1.0
+1.0.a
 
 ## Features
 
