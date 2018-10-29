@@ -1,0 +1,16 @@
+{% load i18n %}
+
+<h6>{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}</h6>
+<hr style="margin-bottom: 0px">
+<nav class="navbar navbar-expand-sm navbar-default">
+  <div id="main-menu" class="main-menu collapse navbar-collapse" style="padding-bottom: 5px;">
+    <ul class="nav navbar-nav">
+      {% for choice in choices %}
+      <li class="{% if choice.selected %}active{% endif %}">
+        <a href="{{ choice.query_string|iriencode }}" title="{{ choice.display }}" style="padding: 2px 0;">{{ choice.display }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <!-- /.navbar-collapse -->
+</nav>

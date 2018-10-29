@@ -1,0 +1,12 @@
+Metadata-Version: 1.1
+Name: djello
+Version: 1.0a0
+Summary: A pretty and configurable admin panel to enhance the default Django Admin Panel based on Ela Admin
+Home-page: https://github.com/eshandas/djello
+Author: Eshan Das
+Author-email: eshandasnit@gmail.com
+License: UNKNOWN
+Download-URL: https://github.com/eshandas/djello/archive/1.0.a.tar.gz
+Description: UNKNOWN
+Keywords: django,admin,panel,dashboard
+Platform: UNKNOWN

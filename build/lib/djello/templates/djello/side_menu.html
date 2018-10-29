@@ -1,0 +1,21 @@
+{% load i18n %}
+
+{% if app_list %}
+  {% url 'admin:index' as admin_url %}
+  <li class="{% if current_url == admin_url %}active{% endif %}">
+    <a href="{{ admin_url }}"><i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+  </li>
+  {% for app in app_list %}
+    <!-- /.menu-title -->
+    <li class="menu-item-has-children dropdown {% if app.app_url in current_url %}active{% endif %}">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa {{ app.icon }}"></i>{{ app.name }}</a>
+      <ul class="sub-menu children dropdown-menu">
+        {% for model in app.models %}
+          <li><i class="menu-icon fa {{ model.icon }}"></i><a href="{{ model.admin_url }}">{{ model.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+{% else %}
+  <p>{% trans "You don't have permission to edit anything." %}</p>
+{% endif %}

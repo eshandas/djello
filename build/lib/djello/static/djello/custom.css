@@ -1,0 +1,13 @@
+.scrollable {
+    overflow-y: auto;
+    max-height: 327px;
+    min-height: 327px;
+}
+
+.medium-text {
+      font-size: medium;
+}
+
+.small-text {
+      font-size: small;
+}

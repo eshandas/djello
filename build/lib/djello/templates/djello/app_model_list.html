@@ -1,0 +1,20 @@
+{% load i18n %}
+
+{% for model in model_list %}
+  <li class="list-group-item">
+    <i class="fa {{ model.icon }}"></i>
+    &nbsp;
+    <span class="medium-text">
+      <a href="#">{{ model.name }}</a>
+    </span>
+    <span class="pull-right">
+      {% if model.admin_url %}
+        <a href="{{ model.admin_url }}"><i class="fa fa-pencil text-warning"></i> Change</a>
+      {% endif %}
+      {% if model.add_url %}
+        &nbsp;
+        <a href="{{ model.add_url }}"><i class="fa fa-plus text-success"></i> Add</a>
+      {% endif %}
+    </span>
+  </li>    
+{% endfor %}
