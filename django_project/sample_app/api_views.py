@@ -5,23 +5,23 @@ from rest_framework import status
 import random
 
 
-class AnomaliesDetectedAPI(APIView):
+class RevenueAPI(APIView):
 
     def get(self, context):
         context = {
             'mainText': random.randint(10000, 1000000),
-            'subText': 'Anomalies Detected'}
+            'subText': 'Revenue'}
         return Response(
             context,
             status=status.HTTP_200_OK)
 
 
-class AccountsScannedAPI(APIView):
+class SalesAPI(APIView):
 
     def get(self, context):
         context = {
             'mainText': random.randint(10000, 1000000),
-            'subText': 'Accounts Scanned'}
+            'subText': 'Sales'}
         return Response(
             context,
             status=status.HTTP_200_OK)

@@ -141,35 +141,23 @@ DJELLO = {
         'sample_app': {
             'icon': 'fa-tasks',
             'model_icons': {
-                'Post': 'fa-bullhorn'}},
-        'django_celery_beat': {
-            'icon': 'fa-calendar', 'model_icons': {
-                'CrontabSchedule': 'fa-calendar-o',
-                'IntervalSchedule': 'fa-clock-o',
-                'PeriodicTask': 'fa-refresh',
-                'SolarSchedule': 'fa-sun-o'}},
-        'simple_django_logger': {
-            'icon': 'fa-files-o',
-            'model_icons': {
-                'EventLog': 'fa-bolt',
-                'Log': 'fa-file-text',
-                'RequestLog': 'fa-exchange'}}},
+                'Post': 'fa-bullhorn'}}},
     'dashboard': [
         [
             {
                 'widget': 'stat-widget',
-                'id': 'anomaliesDetected',
-                'icon': 'fa-umbrella',
+                'id': 'revenue',
+                'icon': 'fa-money',
                 'color': 'flat-color-1',
                 'size': '3',
-                'data_url': 'sample_app_api:anomalies_detected'
+                'data_url': 'sample_app_api:revenue'
             }, {
                 'widget': 'stat-widget',
-                'id': 'accountsScanned',
-                'icon': 'fa-group',
+                'id': 'sales',
+                'icon': 'fa-gift',
                 'color': 'flat-color-2',
                 'size': '3',
-                'data_url': 'sample_app_api:accounts_scanned'
+                'data_url': 'sample_app_api:sales'
             }, {
                 'widget': 'stat-widget',
                 'id': 'logsProcessed',
