@@ -17,7 +17,7 @@ A pretty and configurable admin panel to enhance the default Django Admin Panel 
 Using pip
 
 ```
-pip install pyrete
+pip install djello
 ```
 
 ## Setup
