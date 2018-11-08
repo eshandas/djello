@@ -19,16 +19,25 @@ A pretty and configurable admin panel to enhance the default Django Admin Panel 
 ### Login Page
 ![Login](https://github.com/eshandas/djello/blob/master/screenshots/login.png?raw=true)
 
-### Dashboard with custom graphs
+### Dashboard with Configurable Widgets
 ![Dashboard 1](https://github.com/eshandas/djello/blob/master/screenshots/dashboard_1.png?raw=true)
 ![Dashboard 2](https://github.com/eshandas/djello/blob/master/screenshots/dashboard_2.png?raw=true)
+
+### Custom Header Links
+![Header Links](https://github.com/eshandas/djello/blob/master/screenshots/header_links.png?raw=true)
 
 ### Changelist Page
 ![Changelist](https://github.com/eshandas/djello/blob/master/screenshots/changelist.png?raw=true)
 ![Changelist Search](https://github.com/eshandas/djello/blob/master/screenshots/changelist_search.png?raw=true)
 
-### Login Page
-![Login](https://github.com/eshandas/djello/blob/master/screenshots/login.png?raw=true)
+### Model List Page
+![Model List](https://github.com/eshandas/djello/blob/master/screenshots/app_list.png?raw=true)
+
+### Model Update Page
+![Model Update](https://github.com/eshandas/djello/blob/master/screenshots/model_list.png?raw=true)
+
+### Logout Page
+![Logout](https://github.com/eshandas/djello/blob/master/screenshots/logout.png?raw=true)
 
 
 ## Dependencies
