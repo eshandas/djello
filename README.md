@@ -161,6 +161,40 @@ DJELLO = {
 
 Once Djello is installed and setup is done, it will automatically replace the default admin template with Ela Admin template.
 
+### Logos
+
+Two logos are to be provided, one what you see in the left side of the header and the other for Login and Logout pages.
+
+```
+'header_logo': 'djello/images/logo.png'
+'welcome_logo': 'djello/images/logo.png'
+```
+
+### Header Links
+
+Custom header links can be added at the top right corner of the site header.
+
+```
+'header_links': [
+    ('/some/url/', '<font awesome icon>'),
+    ('/some/other/url/', '<font awesome icon>'),
+]
+```
+
+### Sidebar Menu
+
+The sidebar menu shows the installed Django apps and the icons can be configured by:
+
+```
+'menu': {
+    '<app_name>': {
+        'icon': '<font awesome icon>',
+        'model_icons': {
+            '<model_name>': '<font awesome icon>',
+            '<some_other_model_name>': '<font awesome icon>'}},
+    }
+```            
+
 ### Widgets
 
 Right now only the below listed widgets are supported by Djello, that too only in the Dashboard page. However, I plan to include the ability to add widgets in other pages as well.
@@ -319,3 +353,7 @@ Below is an example which will add a **line graph**. This could be changed to an
 ```
 
 ## Future
+
+Right now, the widgets can only be added in the Dashboard page. I intend to add widget support for other pages as well.
+
+Let me know if you have any other widget that you'd like me to include.
