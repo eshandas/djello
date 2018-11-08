@@ -16,6 +16,18 @@ A pretty and configurable admin panel to enhance the default Django Admin Panel 
 
 ## Screenshots
 
+### Login Page
+![Login](https://github.com/eshandas/djello/blob/master/screenshots/login.png?raw=true)
+
+### Dashboard with custom graphs
+![Dashboard 1](https://github.com/eshandas/djello/blob/master/screenshots/dashboard_1.png?raw=true)
+![Dashboard 2](https://github.com/eshandas/djello/blob/master/screenshots/dashboard_2.png?raw=true)
+
+### Changelist Page
+![Changelist](https://github.com/eshandas/djello/blob/master/screenshots/changelist.png?raw=true)
+![Changelist Search](https://github.com/eshandas/djello/blob/master/screenshots/changelist_search.png?raw=true)
+
+### Login Page
 ![Login](https://github.com/eshandas/djello/blob/master/screenshots/login.png?raw=true)
 
 
