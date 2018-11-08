@@ -58,6 +58,7 @@ pip install djello
 * Add in app list before 'django.contrib.admin'
 
 ```
+'widget_tweaks',
 'djello',
 'django.contrib.admin'
 ...
