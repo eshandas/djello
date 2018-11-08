@@ -14,6 +14,10 @@ A pretty and configurable admin panel to enhance the default Django Admin Panel 
 * Branding by adding logos
 * [Chart js](https://www.chartjs.org/) based widgets which loads data after page load and completely configurable via http apis
 
+## Screenshots
+
+![Login](https://github.com/eshandas/djello/blob/master/screenshots/login.png?raw=true)
+
 
 ## Dependencies
 
@@ -133,6 +137,5 @@ DJELLO = {
 
 
 ## Usage
-
 
 ## Future
